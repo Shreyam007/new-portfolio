@@ -1,19 +1,108 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
 
-*{
+/* For small devices (phones) */
+@media (max-width: 600px) {
+    .navbar {
+        flex-direction: column; /* Stack items vertically */
+        text-align: center;
+    }
+    
+    .contact-container {
+        width: 90%; /* Adjust width for smaller screens */
+        padding: 20px;
+    }
+}
+
+/* For tablets */
+@media (min-width: 601px) and (max-width: 1024px) {
+    .contact-container {
+        width: 70%;
+    }
+}
+
+/* For large screens (PC) */
+@media (min-width: 1025px) {
+    .contact-container {
+        width: 50%;
+    }
+}
+
+.contact-container {
+    max-width: 500px; /* Ensures it doesn't become too wide on big screens */
+    width: 90%; /* Adjusts dynamically */
+}
+
+.menu-icon {
+    display: none;
+    cursor: pointer;
+}
+
+@media (max-width: 768px) {
+    .menu-icon {
+        display: block;
+    }
+
+    .navbar ul {
+        display: none;
+        flex-direction: column;
+        background: #1c1c1c;
+        position: absolute;
+        width: 100%;
+    }
+
+    .navbar ul.active {
+        display: flex;
+    }
+}
+
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
 }
 
+body {
+    background-color: #1f242d; /* Dark background for the page */
+}
+
+/* Preloader styles */
+.preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #000; /* Black screen for the preloader */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000; /* Ensure it appears above other content */
+    animation: fade-out 1s ease-in-out forwards;
+    animation-delay: 3s; /* Display preloader for 3 seconds */
+}
+
+.preloader-gif {
+    width: 100px; /* Adjust the size of the GIF as needed */
+    height: 100px;
+}
+
+@keyframes fade-out {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+        visibility: hidden;
+    }
+}
 
 a {
     color: #fff;
     text-decoration: none;
 }
 
-.navbar{
+.navbar {
     position: fixed;
     left: 0;
     top: 0;
@@ -26,7 +115,7 @@ a {
     visibility: hidden;
     opacity: 0;
     animation: show-content 1.5s linear forwards;
-    animation-delay: 1.2s;
+    animation-delay: 4s; /* Adjusted to appear after preloader (3s + 1s fade-out) */
 }
 
 @keyframes show-content {
@@ -36,12 +125,12 @@ a {
     }
 }
 
-.navbar .logo{
+.navbar .logo {
     font-size: 30px;
     font-weight: 700;
 }
 
-.navbar ul{
+.navbar ul {
     display: flex;
 }
 
@@ -50,18 +139,18 @@ a {
     margin-left: 35px;
 }
 
-.navbar ul li a{
+.navbar ul li a {
     font-size: 20px;
     font-weight: 500;
     transition: .5s;
 }
 
 .navbar ul li:hover a,
-.navbar ul li.active a{
+.navbar ul li.active a {
     color: #7cf03d;
 }
 
-.home{
+.home {
     display: flex;
     align-items: center;
     gap: 50px;
@@ -71,20 +160,20 @@ a {
     visibility: hidden;
     opacity: 0;
     animation: show-content 1.5s linear forwards;
-    animation-delay: 1.6s;
+    animation-delay: 4.5s; /* Adjusted to appear after preloader and navbar */
 }
 
-.home-info h1{
+.home-info h1 {
     font-size: 55px;
 }
 
-.home-info h2{
+.home-info h2 {
     display: inline-block;
     font-size: 32px;
     margin-top: -10px;
 }
 
-.home-info h2 span{
+.home-info h2 span {
     position: relative;
     display: inline-block;
     color: transparent;
@@ -94,14 +183,13 @@ a {
 }
 
 @keyframes display-text {
-
     25%,
     100% {
         display: none;
     }
 }
 
-.home-info h2 span::before{
+.home-info h2 span::before {
     content: attr(data-text);
     position: absolute;
     width: 0;
@@ -113,27 +201,27 @@ a {
 }
 
 @keyframes fill-text {
-    10%,100%{
+    10%, 100% {
         width: 0;
     }
 
     70%,
-    90%{
+    90% {
         width: 100%;
     }
 }
 
-.home-info p{
+.home-info p {
     font-size: 16px;
     margin: 10px 0 25px;
 }
 
-.home-info .btn-sci{
+.home-info .btn-sci {
     display: flex;
     align-items: center;
 }
 
-.btn{
+.btn {
     display: inline-block;
     padding: 10px 30px;
     background: #7cf03d;
@@ -146,17 +234,17 @@ a {
     transition: .5s;
 }
 
-.btn:hover{
+.btn:hover {
     background: transparent;
     color: #7cf03d;
     box-shadow: none;
 }
 
-.home-info .btn-sci .sci{
+.home-info .btn-sci .sci {
     margin-left: 20px;
 }
 
-.home-info .btn-sci .sci a{
+.home-info .btn-sci .sci a {
     display: inline-flex;
     padding: 8px;
     border: 2px solid #7cf03d;
@@ -167,13 +255,13 @@ a {
     transition: .5s;
 }
 
-.home-info .btn-sci .sci a:hover{
+.home-info .btn-sci .sci a:hover {
     background-color: #7cf03d;
     color: #1f242d;
     box-shadow: 0 0 10px #7cf03d;
 }
 
-.home-img .img-box{
+.home-img .img-box {
     position: relative;
     width: 32vw;
     height: 32vw;
@@ -192,7 +280,8 @@ a {
     width: 500px;
     height: 500px;
 }
-.home-img .img-box .img-item{
+
+.home-img .img-box .img-item {
     position: relative;
     width: 100%;
     height: 100%;
@@ -205,34 +294,11 @@ a {
     overflow: hidden;
 }
 
-.home-img .img-box .img-item{
+.home-img .img-box .img-item {
     position: absolute;
     top: 30px;
     right: 40px;
     width: 85%;
     object-fit: cover;
     mix-blend-mode: lighten;
-}
-
-.bars-animation{
-    position: absolute;
-    height: 100%;
-    width: 100%;
-    display: flex;
-    z-index: -1;
-}
-
-.bars-animation .bar{
-    width: 100%;
-    height: 100%;
-    background: #1f242d;  
-    transform: translate(-100%);
-    animation: show-bars .5s ease-in-out forwards;
-    animation-delay: calc(.1s * var(--i));
-}
-
-@keyframes show-bars {
-    100% {
-        transform: translate(0%);
-    }
 }
